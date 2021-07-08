@@ -50,7 +50,7 @@
 
   <main class="container-fluid">
     <!-- NOTE Welcome Header -->
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-12 d-flex justify-content-center">
         <h2>Hack & Slash</h2>
       </div>
@@ -60,7 +60,7 @@
     <!-- NOTE SCORE HEADER -->
     <div class="row d-flex align-self-center ">
       <!-- NOTE Score Column -->
-      <div class="col-md-6 ">
+      <div class="col-md-6 order-md-0 order-1">
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center" id="Exp">
             <!-- <h3>Your Score: 0</h3> -->
@@ -70,7 +70,7 @@
       </div>
 
       <!-- NOTE Upgrade Status -->
-      <div class="col-md-6 ">
+      <div class="col-md-6 order-md-1 order-0">
         <div class="row">
           <div class="col-md-4 d-flex justify-content-center" id="sword">
           </div>
@@ -80,6 +80,7 @@
           </div>
           <div class="col-md-12 d-flex justify-content-center" id='lucky'>
           </div>
+
         </div>
 
 
@@ -101,24 +102,25 @@
         <!-- NOTE Title for Shop -->
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center mb-3">
-            <h4>Heroes Blacksmith</h4>
+            <h5>Heroes Blacksmith</h5>
           </div>
         </div>
 
         <!-- NOTE This Row will be to upgrade click count via sword -->
         <div class="row">
-          <div class="col-md-6 d-flex justify-content-center mb-3">
-            <button class="btn btn-success" onclick="upgradeSword()">
-              <h5>Upgrade Sword <span id="swordprice"></span></h5>
+          <div class="col-md-12 d-flex justify-content-center" id="clicksec"></div>
+          <div class="col-md-6 d-flex justify-content-center mb-3" id="swordbtn">
+            <!-- <button class="btn btn-success" onclick="upgradeSword()">
+              <h6>Upgrade Sword <span id="swordprice"></span></h6>
               <p id="swordxp"></p>
-            </button>
+            </button> -->
           </div>
 
           <!-- NOTE This Row is to upgrade click count at a higher rate -->
 
           <div class="col-md-6 d-flex justify-content-center mb-3">
-            <button class="btn btn-success" onclick="ApplyEnchantment()">
-              <h5>Apply Enchantment <span id="enchprice"></span></h5>
+            <button class="btn btn-primary" onclick="ApplyEnchantment()">
+              <h6>Apply Enchantment <span id="enchprice"></span></h6>
               <span id="enchxp"></span>
             </button>
           </div>
@@ -132,8 +134,8 @@
         <!-- NOTE This Feat will Automatically Deal Damage to the Creature and Return Experience -->
         <div class="row">
           <div class="col-md-6 d-flex justify-content-center mb-3">
-            <button class="btn btn-success" onclick="bladeMastery()">
-              <h5>Blade Mastery <span id="bladeprice"></span></h5>
+            <button class="btn btn-danger" onclick="bladeMastery()">
+              <h6>Blade Mastery <span id="bladeprice"></span></h6>
               <span id="bladexp"></span>
             </button>
           </div>

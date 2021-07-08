@@ -7,13 +7,13 @@ let sword = 0
 let enchant = 0
 let blade = 0
 let lucky = 0
-let swordprice = 100
-let enchantprice = 3000
-let bladeprice = 1000
-let luckprice = 50000
+let swordprice = 50
+let enchantprice = 1500
+let bladeprice = 500
+let luckprice = 25000
 let swordxp = 0
 let enchantmentxp = 0
-let blademasteryxp = 0
+let blademasteryxp = 100
 let goblinhealth = 300
 
 
@@ -22,6 +22,8 @@ let goblinhealth = 300
 function clickButton() {
   experience += clicks
 
+
+
   update()
 }
 
@@ -29,7 +31,7 @@ function clickButton() {
 function update() {
   document.getElementById('Exp').innerHTML = `<h3> Experience: ${experience} </h3>`
 
-  document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp} XP Per 3 seconds)</p>`
+  document.getElementById('clicksec').innerHTML = `<h5> Experience Per Click: ${clicks} </h5>`
 
 }
 
@@ -39,16 +41,11 @@ function upgradeSword() {
     sword += 1
     experience = experience - swordprice
     swordprice = Math.floor(swordprice * 1.5)
-    clicks = clicks + 15
-    swordxp += 15
-
-    console.log(experience)
-    console.log(swordprice)
-    console.log(clicks)
-    console.log(sword)
+    clicks = clicks + 5
+    swordxp += 5
     document.getElementById('sword').innerHTML = `<h5> Sword: ${sword} </h5>`
     document.getElementById('swordprice').innerHTML = ` ${swordprice}`
-    document.getElementById('swordxp').innerHTML = `<p>(+${swordxp} XP per click)</p>`
+    document.getElementById('swordxp').innerHTML = `<p>(+${swordxp + 1} XP per click)</p>`
 
     update()
   }
@@ -61,8 +58,8 @@ function ApplyEnchantment() {
     enchant += 1
     experience = experience - enchantprice
     enchantprice = Math.floor(enchantprice * 3)
-    clicks = clicks + 250
-    enchantmentxp += 250
+    clicks = clicks + 100
+    enchantmentxp += 100
 
     console.log(experience)
     console.log(enchantprice)
@@ -84,18 +81,22 @@ function bladeMastery() {
     blade += 1
     experience = experience - bladeprice
     bladeprice = Math.floor(bladeprice * 2)
-    setInterval(clickButton, 2000)
-    blademasteryxp += clicks
+    setInterval(masteryinterval, 3000)
 
 
     document.getElementById('blade').innerHTML = `<h5> Blades: ${blade} </h5>`
 
     document.getElementById('bladeprice').innerHTML = `${bladeprice}`
-    document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp} XP Per 3 seconds)</p>`
+    document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp * blade} XP every 3 seconds)</p>`
 
 
     update()
   }
+}
+function masteryinterval() {
+  experience += blademasteryxp
+
+  update()
 }
 
 // NOTE Function that starts the yourelucky function and disables the button
@@ -104,11 +105,11 @@ function increaseluck() {
     luck += 1
     experience = experience - luckprice
     luckprice = Math.floor(luckprice * 2)
-    setInterval(yourelucky, 20000)
+    setInterval(yourelucky, 1000)
 
     document.getElementById('lucky').innerHTML = ` <h5> You're Lucky! </h5>`
     document.getElementById('luck').innerHTML = `<button disabled class="btn btn-success" onclick="increaseluck()">
-    <h4>Lucky</h4>
+    <h6>Lucky (You Get 10x Exp Per Click Every Second</h6>
   </button>`
 
     update()
@@ -118,19 +119,25 @@ function increaseluck() {
 
 // NOTE Function for interval luck experience
 function yourelucky() {
-  experience = experience + (clicks * 150)
+  experience = experience + (clicks * 10)
   console.log(experience)
 
   update()
 }
 
 
-// NOTE Function to draw lucky button
+// NOTE Function to draw buttons
 function drawbtn() {
   document.getElementById('luck').innerHTML = `
   <button class="btn btn-success" onclick="increaseluck()">
-                <h4>Lucky 50000</h4>
+                <h6>Lucky 25000</h6>
               </button>`
+
+  document.getElementById('swordbtn').innerHTML = `
+  <button class="btn btn-secondary" onclick="upgradeSword()">
+  <h6>Upgrade Sword <span id="swordprice"></span></h6>
+  <p id="swordxp"></p>
+</button>`
 }
 
 
@@ -150,9 +157,9 @@ function drawPrices() {
 
   document.getElementById('blade').innerHTML = `<h5> Blades: ${blade} </h5>`
   document.getElementById('bladeprice').innerHTML = `${bladeprice}`
-  document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp} XP Per 3 seconds)</p>`
+  document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp} XP every 3 seconds)</p>`
 
-
+  document.getElementById('clicksec').innerHTML = `<h5> Experience Per Click: ${clicks} </h5>`
   update()
 }
 
@@ -164,6 +171,8 @@ function hurtgoblin() {
 
   }
 }
+
+
 
 drawbtn()
 update()
