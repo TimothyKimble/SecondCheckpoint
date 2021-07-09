@@ -32,7 +32,6 @@ function update() {
   document.getElementById('Exp').innerHTML = `<h3> Experience: ${experience} </h3>`
 
   document.getElementById('clicksec').innerHTML = `<h5> Experience Per Click: ${clicks} </h5>`
-
 }
 
 // NOTE When Upgrade Sword button is clicked, increase the experience gained for each click by 1.5 times. Also increase the cost of the button
@@ -47,8 +46,8 @@ function upgradeSword() {
     document.getElementById('swordprice').innerHTML = ` ${swordprice}`
     document.getElementById('swordxp').innerHTML = `<p>(+${swordxp + 1} XP per click)</p>`
 
-    update()
   }
+  update()
 }
 
 
@@ -61,16 +60,12 @@ function ApplyEnchantment() {
     clicks = clicks + 100
     enchantmentxp += 100
 
-    console.log(experience)
-    console.log(enchantprice)
-    console.log(clicks)
-    console.log(enchant)
     document.getElementById('ench').innerHTML = `<h5> Enchant: ${enchant} </h5>`
     document.getElementById('enchprice').innerHTML = ` ${enchantprice} `
     document.getElementById('enchxp').innerHTML = `<p>(+${enchantmentxp} XP per click)</p>`
 
-    update()
   }
+  update()
 
 }
 
@@ -90,8 +85,8 @@ function bladeMastery() {
     document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp * blade} XP every 3 seconds)</p>`
 
 
-    update()
   }
+  update()
 }
 function masteryinterval() {
   experience += blademasteryxp
@@ -157,7 +152,7 @@ function drawPrices() {
 
   document.getElementById('blade').innerHTML = `<h5> Blades: ${blade} </h5>`
   document.getElementById('bladeprice').innerHTML = `${bladeprice}`
-  document.getElementById('bladexp').innerHTML = `<p>(+${blademasteryxp} XP every 3 seconds)</p>`
+  document.getElementById('bladexp').innerHTML = `<p>(+0 XP every 3 seconds)</p>`
 
   document.getElementById('clicksec').innerHTML = `<h5> Experience Per Click: ${clicks} </h5>`
   update()
@@ -171,6 +166,7 @@ function hurtgoblin() {
 
   }
 }
+
 
 
 
